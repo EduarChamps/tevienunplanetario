@@ -2088,18 +2088,20 @@ footer h3{
 
 .preguardar-lanzamiento{
 
-    margin-top:35px;
+    margin-top:45px;
 
 }
 
 
 .texto-preguardar{
 
-    color:#ddd;
+    color:#e8e8e8;
 
-    margin-bottom:25px;
+    margin-bottom:28px;
 
     font-size:18px;
+
+    letter-spacing:1px;
 
 }
 
@@ -2108,15 +2110,16 @@ footer h3{
 
     display:flex;
 
-    justify-content:center;
+    flex-direction:column;
 
-    gap:20px;
+    align-items:center;
 
-    flex-wrap:wrap;
+    gap:22px;
 
 }
 
 
+/* BOTÓN GENERAL */
 
 .btn-preguardar{
 
@@ -2126,9 +2129,11 @@ footer h3{
 
     justify-content:center;
 
-    gap:12px;
+    gap:15px;
 
-    min-width:300px;
+    width:100%;
+
+    max-width:520px;
 
     padding:18px 30px;
 
@@ -2138,78 +2143,106 @@ footer h3{
 
     text-decoration:none;
 
-    font-weight:bold;
+    font-size:17px;
 
-    font-size:16px;
+    font-weight:700;
 
-    transition:.35s;
+    letter-spacing:1px;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        filter .35s ease;
 
 }
-
 
 
 .btn-preguardar i{
 
-    font-size:28px;
+    font-size:30px;
 
 }
 
 
 
-/* Spotify */
+/* =========================
+   SPOTIFY
+========================= */
 
 .spotify-preguardar{
 
-    background:#1DB954;
+    background:linear-gradient(
+        135deg,
+        #1ED760,
+        #1DB954
+    );
 
     box-shadow:
 
-    0 0 20px rgba(29,185,84,.35);
+        0 0 20px rgba(29,185,84,.55),
+
+        0 0 45px rgba(29,185,84,.25);
 
 }
 
 
 .spotify-preguardar:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-6px) scale(1.02);
 
     box-shadow:
 
-    0 0 25px rgba(29,185,84,.8),
+        0 0 25px rgba(29,185,84,1),
 
-    0 0 60px rgba(29,185,84,.45);
+        0 0 55px rgba(29,185,84,.9),
+
+        0 0 90px rgba(29,185,84,.55);
 
 }
 
 
 
-/* Apple Music */
+/* =========================
+   APPLE MUSIC
+========================= */
 
 .apple-preguardar{
 
-    background:
-
-    linear-gradient(
+    background:linear-gradient(
         135deg,
-        #ff3366,
-        #d81b60
+        #ff4f7d,
+        #d91d63
     );
 
     box-shadow:
 
-    0 0 20px rgba(255,50,100,.35);
+        0 0 20px rgba(255,70,120,.55),
+
+        0 0 45px rgba(255,70,120,.25);
 
 }
 
 
 .apple-preguardar:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-6px) scale(1.02);
 
     box-shadow:
 
-    0 0 25px rgba(255,70,120,.8),
+        0 0 25px rgba(255,70,120,1),
 
-    0 0 60px rgba(255,70,120,.45);
+        0 0 55px rgba(255,70,120,.9),
+
+        0 0 90px rgba(255,70,120,.55);
+
+}
+
+.btn-preguardar i{
+
+    font-size:30px;
+
+    filter:drop-shadow(
+        0 0 10px rgba(255,255,255,.75)
+    );
 
 }
