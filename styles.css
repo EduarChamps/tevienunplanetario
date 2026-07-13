@@ -1480,7 +1480,7 @@ footer h3{
 ========================= */
 
 
-.btn-musica{
+.btn-principal{
 
     display:inline-block;
 
@@ -1517,7 +1517,7 @@ footer h3{
 
 
 
-.btn-musica:hover{
+.btn-principal:hover{
 
 
     transform:translateY(-6px);
