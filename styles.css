@@ -1241,7 +1241,9 @@ footer h3{
 
     color:white;
 
-    margin-top:30px;
+    margin-top:60px;
+
+    margin-bottom:25px;
 
     font-size:22px;
 
@@ -1258,6 +1260,8 @@ footer h3{
     gap:20px;
 
     flex-wrap:wrap;
+
+    margin-top:20px;
 
 }
 
