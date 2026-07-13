@@ -924,3 +924,108 @@ footer p{
     color:#777;
 
 }
+
+/* =========================
+   LANZAMIENTO EP
+========================= */
+
+
+.lanzamiento-ep{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    color:white;
+
+}
+
+
+
+.lanzamiento-ep span{
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+    color:#aaa;
+
+}
+
+
+
+.lanzamiento-ep h3{
+
+    margin:15px 0;
+
+    font-size:24px;
+
+    letter-spacing:2px;
+
+}
+
+
+
+.lanzamiento-ep p{
+
+    color:#bbb;
+
+    line-height:1.7;
+
+    letter-spacing:2px;
+
+}
+
+
+
+
+.lanzamiento-ep a{
+
+
+    display:inline-block;
+
+
+    margin-top:20px;
+
+
+    padding:12px 35px;
+
+
+    color:white;
+
+
+    text-decoration:none;
+
+
+    border-radius:30px;
+
+
+    border:1px solid rgba(255,255,255,.3);
+
+
+    background:rgba(255,255,255,.05);
+
+
+    backdrop-filter:blur(10px);
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.lanzamiento-ep a:hover{
+
+
+    transform:translateY(-5px);
+
+
+    background:#7254a3;
+
+
+    box-shadow:0 0 25px rgba(150,100,220,.5);
+
+
+}
