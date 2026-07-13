@@ -1290,7 +1290,12 @@ footer h3{
     background:#7254a3;
 
     box-shadow:
-    0 0 25px rgba(150,100,220,.5);
+
+    0 0 20px rgba(150,100,220,.8),
+
+    0 0 45px rgba(150,100,220,.6),
+
+    0 0 70px rgba(150,100,220,.35);
 
 }
 
@@ -1302,23 +1307,55 @@ footer h3{
 
 }
 
+/* Instagram */
+
 .botones-redes a:nth-child(1):hover{
 
     background:#8a3ab9;
 
+    box-shadow:
+
+    0 0 20px rgba(138,58,185,.8),
+
+    0 0 50px rgba(225,48,108,.5);
+
+    transform:translateY(-5px);
+
 }
 
+
+
+/* X */
 
 .botones-redes a:nth-child(2):hover{
 
     background:#000;
 
+    box-shadow:
+
+    0 0 20px rgba(255,255,255,.7),
+
+    0 0 50px rgba(255,255,255,.3);
+
+    transform:translateY(-5px);
+
 }
 
+
+
+/* Facebook */
 
 .botones-redes a:nth-child(3):hover{
 
     background:#1877f2;
+
+    box-shadow:
+
+    0 0 20px rgba(24,119,242,.8),
+
+    0 0 50px rgba(24,119,242,.5);
+
+    transform:translateY(-5px);
 
 }
 
