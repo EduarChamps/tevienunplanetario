@@ -1029,3 +1029,22 @@ footer p{
 
 
 }
+
+.botones-portada a{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+}
+
+
+.botones-portada i{
+
+    font-size:20px;
+
+}
