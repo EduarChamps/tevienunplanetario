@@ -2000,3 +2000,29 @@ footer h3{
     }
 
 }
+
+
+.mensaje-estreno{
+
+    padding:20px 35px;
+
+    color:white;
+
+    font-size:22px;
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+    border-radius:30px;
+
+    background:linear-gradient(
+        135deg,
+        #8f5cff,
+        #cba6ff
+    );
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.5),
+        0 0 55px rgba(160,100,240,.75);
+
+}
