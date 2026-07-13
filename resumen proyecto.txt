@@ -1,0 +1,550 @@
+PROYECTO: PAGINA WEB OFICIAL - TE VI EN UN PLANETARIO
+
+==================================================
+
+OBJETIVO DEL PROYECTO
+
+Crear una página web tipo blog / landing page para la banda mexicana:
+
+TE VI EN UN PLANETARIO
+
+Género:
+
+Dream Pop
+Shoegaze
+Indie
+
+La página busca:
+
+Presentar la banda.
+Retener visitantes.
+Mostrar próximas presentaciones.
+Facilitar la escucha de música.
+Servir como carta de presentación para eventos.
+Crear una presencia digital profesional.
+
+El proyecto se desarrolla manualmente usando:
+
+HTML5
+CSS3
+JavaScript
+
+Editor utilizado:
+
+Notepad++
+
+==================================================
+
+CONTEXTO DE LA BANDA
+
+Te Vi En Un Planetario es un proyecto musical mexicano de dream pop y shoegaze formado en 2021 por Alexis Ramos e Ilka Serna.
+
+Su propuesta busca crear melodías envolventes que conecten con emociones y sentidos.
+
+Actualmente presentan su tercer EP:
+
+"El fin de los tiempos"
+
+Inspirado en:
+
+El amor.
+La nostalgia.
+Los nuevos caminos.
+Lo ensoñador de enamorarse.
+
+==================================================
+
+ESTRUCTURA ACTUAL DEL PROYECTO
+
+Carpeta:
+
+TeViEnUnPlanetario/
+
+index.html
+
+styles.css
+
+script.js
+
+img/
+
+    banner1.jpg
+    banner2.jpg
+    banner3.jpg
+    banner4.jpg
+    banner5.jpg
+
+
+    shows/
+
+        cdneza.jpg
+        satelite.jpg
+        coacalco.jpg
+
+
+    musica/
+
+        ep.jpg
+
+==================================================
+
+ESTILO VISUAL
+
+La página tiene una estética:
+
+Oscura.
+Elegante.
+Dream pop.
+Shoegaze.
+Atmosférica.
+Minimalista.
+
+Colores predominantes:
+
+Negro.
+Gris oscuro.
+Morado suave.
+Blanco.
+Tonos de luz difusa.
+
+La intención es que parezca una página oficial de una banda indie.
+
+==================================================
+
+ESTADO ACTUAL DEL HTML
+
+SECCIONES EXISTENTES:
+
+BANNER PRINCIPAL
+
+ID:
+
+inicio
+
+Características:
+
+Imagen principal de fondo.
+Carrusel automático de imágenes.
+Cambio de imágenes cada 5 segundos.
+Movimiento vertical manual con rueda.
+Capa oscura encima.
+Título centrado.
+
+Texto principal:
+
+TE VI EN UN PLANETARIO
+
+Descripción:
+
+Un viaje entre sueños, nostalgia
+y sonidos que buscan conectar
+con quienes escuchan.
+
+Incluye botones:
+
+Spotify
+YouTube
+Apple Music
+
+Actualmente esos botones tienen href="#"
+
+Pendiente:
+Cambiar por enlaces reales.
+
+==================================================
+
+MENU DE NAVEGACION
+
+Opciones actuales:
+
+Inicio
+Shows
+Música
+Contacto
+
+Usa navegación interna:
+
+#inicio
+
+#shows
+
+#musica
+
+#contacto
+
+==================================================
+
+PRESENTACION
+
+Título:
+
+Bienvenidos a nuestro universo.
+
+Texto:
+
+Un espacio donde compartiremos nuestra música,
+próximos shows, fotografías y todo lo que forma
+parte del viaje de Te Vi En Un Planetario.
+
+Está centrado mediante CSS.
+
+==================================================
+
+ACERCA DE NOSOTROS
+
+Clase:
+
+.presentacion historia
+
+Debe mantenerse centrado.
+
+Contenido:
+
+Te Vi En Un Planetario es un proyecto musical mexicano
+de dream pop y shoegaze formado en 2021 por Alexis Ramos
+e Ilka Serna.
+
+Han recorrido distintos escenarios del país compartiendo
+música con proyectos de la escena indie.
+
+Su propuesta busca crear melodías envolventes que conecten
+con las emociones y los sentidos.
+
+Actualmente presentan su tercer EP:
+
+"El fin de los tiempos"
+
+Inspirado en el amor,
+la nostalgia y los nuevos caminos.
+
+==================================================
+
+SHOWS
+
+Sección:
+
+Próximas presentaciones.
+
+Tiene tres tarjetas.
+
+SHOW 1:
+
+Lugar:
+
+CD Neza
+
+Fecha:
+
+Sábado 01 de Agosto 2026 - 19:00 hrs.
+
+Evento:
+
+Te Vi En Un Planetario
++
+Siempre No
+
+SHOW 2:
+
+Lugar:
+
+Satélite
+
+Fecha:
+
+Viernes 07 de Agosto 2026 - 20:00 hrs.
+
+Evento:
+
+Te Vi En Un Planetario
++
+Siempre No
+
+SHOW 3:
+
+Lugar:
+
+Coacalco
+
+Fecha:
+
+Sábado 08 de Agosto 2026 - 19:00 hrs.
+
+Evento:
+
+Te Vi En Un Planetario
++
+Siempre No
+
+==================================================
+
+MUSICA
+
+ID:
+
+musica
+
+Título:
+
+Escucha nuestra música
+
+Descripción:
+
+Sumérgete en nuestros sonidos,
+historias y paisajes entre el dream pop
+y el shoegaze.
+
+Contiene:
+
+PORTADA DEL EP:
+
+img/musica/ep.jpg
+
+Álbum:
+
+El fin de los tiempos
+
+Artista:
+
+Te Vi En Un Planetario
+
+Descripción:
+
+Un EP inspirado en lo ensoñador de enamorarse,
+la nostalgia de extrañar algo que aún no se ha perdido
+y los nuevos caminos que aparecen en el recorrido.
+
+==================================================
+
+SPOTIFY
+
+Spotify embed funcionando:
+
+https://open.spotify.com/embed/album/4X13vjFX72SD9wUTWd2iYq
+
+Código integrado actualmente:
+
+iframe de Spotify generado desde la plataforma.
+
+==================================================
+
+YOUTUBE
+
+Estado:
+
+Pendiente.
+
+Problema actual:
+
+Error 153 de YouTube.
+
+Posibles causas:
+
+La página está siendo abierta directamente como archivo:
+
+file://
+
+El navegador requiere un servidor local.
+
+El video puede no permitir inserción.
+
+Pendiente probar:
+
+Servidor local:
+
+python -m http.server
+
+Después abrir:
+
+http://localhost:8000
+
+También revisar en YouTube Studio:
+
+Contenido
+Mostrar más
+Permitir inserción activado.
+
+==================================================
+
+ESTADO DEL CSS
+
+Archivo:
+
+styles.css
+
+Incluye:
+
+Configuración general.
+Banner.
+Overlay.
+Menú.
+Presentaciones.
+Tarjetas de shows.
+Música.
+Historia.
+Botones.
+
+Características:
+
+BANNER:
+
+Altura aproximada:
+450px
+Imagen absoluta.
+Movimiento vertical.
+Transición de opacidad.
+
+MENU:
+
+Fondo transparente.
+Blur.
+Bordes redondeados.
+Hover morado.
+
+PRESENTACIONES:
+
+Texto centrado.
+
+Anchos máximos definidos.
+
+SHOWS:
+
+Tarjetas:
+
+Fondo oscuro.
+Bordes redondeados.
+Hover con elevación.
+Sombras.
+
+MUSICA:
+
+Diseño en dos columnas:
+
+Izquierda:
+Portada EP.
+
+Derecha:
+Información + reproductores.
+
+Responsive:
+
+En móvil pasa a una columna.
+
+==================================================
+
+PROBLEMAS PENDIENTES DEL CSS
+
+Hay bloques repetidos:
+
+.titulo-seccion-musica
+
+.contenido-musica
+
+Funcionan porque CSS usa la última declaración,
+pero después conviene limpiar.
+
+==================================================
+
+JAVASCRIPT ACTUAL
+
+Archivo:
+
+script.js
+
+Funciones:
+
+CARRUSEL DEL BANNER
+
+Imágenes:
+
+banner1.jpg
+banner2.jpg
+banner3.jpg
+banner4.jpg
+banner5.jpg
+
+Cambio automático cada 5 segundos.
+
+Transición:
+
+Fade mediante opacity.
+
+MOVIMIENTO VERTICAL DEL BANNER
+
+Permite mover la imagen con rueda del mouse.
+
+Evita que la página completa haga scroll.
+
+Mantiene el encuadre.
+
+==================================================
+
+MEJORAS PLANEADAS
+
+Orden sugerido:
+
+Resolver YouTube embed.
+
+Limpiar CSS repetido.
+
+Añadir galería fotográfica.
+
+Añadir redes sociales.
+
+Añadir animaciones al hacer scroll.
+
+Mejorar estética dream pop:
+
+Brillos suaves.
+Efecto niebla.
+Movimiento lento.
+Transiciones suaves.
+
+Optimizar versión móvil.
+
+Añadir formulario de contacto.
+
+Agregar sección de integrantes.
+
+Crear archivo de noticias/artículos del blog.
+
+==================================================
+
+FORMA DE TRABAJO
+
+El usuario quiere trabajar de manera iterativa.
+
+Preferencias:
+
+Recibir bloques completos de código.
+Indicar exactamente dónde pegar cada bloque.
+No rehacer todo innecesariamente.
+Mantener coherencia visual.
+Explicar cambios brevemente.
+
+==================================================
+
+ÚLTIMO ESTADO CONOCIDO
+
+La página funciona con:
+
+OK:
+
+HTML estructurado.
+CSS aplicado.
+Banner animado.
+Carrusel.
+Menú.
+Presentación.
+Historia.
+Shows.
+Spotify.
+
+Pendiente:
+
+YouTube.
+Galería.
+Redes.
+Animaciones avanzadas.
+Pulido final.
+
+FIN DEL CONTEXTO DEL PROYECTO
