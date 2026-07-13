@@ -44,7 +44,12 @@ const imagenes = [
     "img/banner7.jpg",
     "img/banner8.jpg",
     "img/banner9.jpg",
-    "img/banner10.jpg"
+    "img/banner10.jpg",
+	"img/banner11.jpg",
+	"img/banner12.jpg",
+	"img/banner13.jpg",
+	"img/banner14.jpg",
+    "img/banner15.jpg"
 ];
 
 let indice = 0;
