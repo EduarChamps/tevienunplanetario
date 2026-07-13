@@ -1486,7 +1486,7 @@ footer h3{
 
     margin-top:20px;
 
-    padding:12px 35px;
+    padding:12px 40px;
 
     color:white;
 
@@ -1498,17 +1498,20 @@ footer h3{
 
     background:rgba(255,255,255,.08);
 
-    border:1px solid rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.7);
 
     backdrop-filter:blur(10px);
 
     transition:.4s;
 
+
     box-shadow:
 
-    0 0 10px rgba(255,255,255,.25),
+    0 0 10px rgba(255,255,255,.5),
 
-    0 0 25px rgba(150,100,220,.35);
+    0 0 25px rgba(180,140,255,.7),
+
+    0 0 45px rgba(140,90,220,.5);
 
 }
 
@@ -1517,15 +1520,15 @@ footer h3{
 .btn-musica:hover{
 
 
-    transform:translateY(-5px);
+    transform:translateY(-6px);
 
 
     background:
 
     linear-gradient(
         135deg,
-        rgba(255,255,255,.35),
-        rgba(140,90,220,.7)
+        rgba(255,255,255,.45),
+        rgba(150,100,230,.8)
     );
 
 
@@ -1534,10 +1537,12 @@ footer h3{
 
     box-shadow:
 
-    0 0 15px rgba(255,255,255,.8),
+    0 0 20px rgba(255,255,255,1),
 
-    0 0 40px rgba(160,110,255,.8),
+    0 0 45px rgba(190,150,255,1),
 
-    0 0 70px rgba(160,110,255,.45);
+    0 0 90px rgba(140,80,230,.8),
+
+    0 0 130px rgba(140,80,230,.4);
 
 }
