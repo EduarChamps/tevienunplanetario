@@ -1,15 +1,19 @@
+// =========================
+// REINICIAR POSICIÓN AL RECARGAR
+// =========================
+
 if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
 }
 
-window.addEventListener("load", function(){
+window.addEventListener("pageshow", function(){
 
     if (!window.location.hash) {
 
         window.scrollTo({
             top:0,
             left:0,
-            behavior:"instant"
+            behavior:"auto"
         });
 
     }
