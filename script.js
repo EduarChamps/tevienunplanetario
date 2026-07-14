@@ -320,9 +320,10 @@ setInterval(function(){
 // ANIMACIONES AL HACER SCROLL
 // =========================
 
-document.addEventListener("DOMContentLoaded", function(){
+function iniciarAnimacionesScroll(){
 
-    const elementosGenerales = document.querySelectorAll(
+    const elementosGenerales =
+    document.querySelectorAll(
 
         ".presentacion, " +
         ".nuevo-lanzamiento, " +
@@ -338,12 +339,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
     elementosGenerales.forEach(function(elemento){
 
-        elemento.classList.add("revelar-scroll");
+        elemento.classList.add(
+            "revelar-scroll"
+        );
 
     });
 
-
-    // Tarjetas de shows con retraso progresivo
 
     const tarjetasShows =
     document.querySelectorAll(".show");
@@ -359,8 +360,6 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 
-    // Portada del EP desde la izquierda
-
     const portada =
     document.querySelector(".portada");
 
@@ -374,8 +373,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     }
 
-
-    // Información musical desde la derecha
 
     const informacionMusica =
     document.querySelector(".info-musica");
@@ -391,26 +388,28 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 
-    // Tarjetas de contacto
-
     const tarjetasContacto =
-    document.querySelectorAll(".tarjeta-contacto");
+    document.querySelectorAll(
+        ".tarjeta-contacto"
+    );
 
 
-    tarjetasContacto.forEach(function(tarjeta, indice){
+    tarjetasContacto.forEach(
+        function(tarjeta, indice){
 
-        tarjeta.classList.add(
-            "revelar-scroll",
-            `retraso-${(indice % 3) + 1}`
-        );
+            tarjeta.classList.add(
+                "revelar-scroll",
+                `retraso-${(indice % 3) + 1}`
+            );
 
-    });
+        }
+    );
 
-
-    // Contador con zoom sutil
 
     const contador =
-    document.querySelector(".contador-lanzamiento");
+    document.querySelector(
+        ".contador-lanzamiento"
+    );
 
 
     if(contador){
@@ -423,10 +422,10 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 
-    // Botones de preguardado
-
     const preguardado =
-    document.querySelector(".preguardar-lanzamiento");
+    document.querySelector(
+        ".preguardar-lanzamiento"
+    );
 
 
     if(preguardado){
@@ -438,48 +437,90 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 
-    const observador = new IntersectionObserver(
+    const elementosAnimados =
+    document.querySelectorAll(
+        ".revelar-scroll"
+    );
+
+
+    if(
+        !("IntersectionObserver" in window)
+    ){
+
+        elementosAnimados.forEach(
+            function(elemento){
+
+                elemento.classList.add(
+                    "visible"
+                );
+
+            }
+        );
+
+        return;
+
+    }
+
+
+    const observador =
+    new IntersectionObserver(
 
         function(entradas){
 
-            entradas.forEach(function(entrada){
+            entradas.forEach(
+                function(entrada){
 
-                if(entrada.isIntersecting){
+                    if(
+                        entrada.isIntersecting
+                    ){
 
-                    entrada.target.classList.add(
-                        "visible"
-                    );
-
-                    observador.unobserve(
                         entrada.target
-                    );
+                        .classList.add(
+                            "visible"
+                        );
+
+                        observador.unobserve(
+                            entrada.target
+                        );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
 
         {
-
-            threshold:0.15,
-
+            threshold:0.08,
             rootMargin:
-            "0px 0px -60px 0px"
-
+            "0px 0px -20px 0px"
         }
 
     );
 
 
-    const elementosAnimados =
-    document.querySelectorAll(".revelar-scroll");
+    elementosAnimados.forEach(
+        function(elemento){
+
+            observador.observe(elemento);
+
+        }
+    );
+
+}
 
 
-    elementosAnimados.forEach(function(elemento){
+if(
+    document.readyState === "loading"
+){
 
-        observador.observe(elemento);
+    document.addEventListener(
+        "DOMContentLoaded",
+        iniciarAnimacionesScroll
+    );
 
-    });
+}else{
 
-});
+    iniciarAnimacionesScroll();
+
+}
