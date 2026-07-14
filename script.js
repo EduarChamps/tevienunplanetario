@@ -1,94 +1,209 @@
 console.log("Página cargada correctamente.");
 
+
+// =========================
+// BANNER Y CARRUSEL
+// =========================
+
 const banner = document.querySelector(".banner");
 const bannerImg = document.getElementById("bannerImg");
 
-let posY = -120;
 
-// Mantener encuadre inicial
-bannerImg.style.top = posY + "px";
+// Lista de imágenes
 
-
-// Movimiento vertical con rueda del ratón
-banner.addEventListener("wheel", function(e){
-
-    e.preventDefault();
-
-    posY -= e.deltaY * 0.5;
-
-    const limiteSuperior = 0;
-    const limiteInferior = banner.clientHeight - bannerImg.clientHeight;
-
-    if(posY > limiteSuperior){
-        posY = limiteSuperior;
-    }
-
-    if(posY < limiteInferior){
-        posY = limiteInferior;
-    }
-
-    bannerImg.style.top = posY + "px";
-	bannerImg.style.transition = "opacity 1.5s ease, transform 6s ease";
-
-}, { passive:false });
-
-
-// Carrusel de imágenes
 const imagenes = [
+
     "img/banner1.jpg",
     "img/banner2.jpg",
     "img/banner3.jpg",
     "img/banner4.jpg",
     "img/banner5.jpg",
-	"img/banner6.jpg",
+    "img/banner6.jpg",
     "img/banner7.jpg",
     "img/banner8.jpg",
     "img/banner9.jpg",
     "img/banner10.jpg",
-	"img/banner11.jpg",
-	"img/banner12.jpg",
-	"img/banner13.jpg",
-	"img/banner14.jpg",
+    "img/banner11.jpg",
+    "img/banner12.jpg",
+    "img/banner13.jpg",
+    "img/banner14.jpg",
     "img/banner15.jpg"
+
 ];
 
+
 let indice = 0;
+let posY = -120;
 
 
-setInterval(function(){
+// Detectar versión móvil
 
-    indice++;
+function esMovil(){
 
-    if(indice >= imagenes.length){
-        indice = 0;
+    return window.innerWidth <= 900;
+
+}
+
+
+// Mantener centrado y aplicar zoom
+
+function aplicarZoomBanner(escala){
+
+    if(esMovil()){
+
+        bannerImg.style.transform =
+        `translateX(-50%) scale(${escala})`;
+
+    }else{
+
+        bannerImg.style.transform =
+        `scale(${escala})`;
+
     }
 
-bannerImg.style.opacity = 0;
-
-setTimeout(function(){
-
-    bannerImg.src = imagenes[indice];
-
-    // Mantener encuadre
-    bannerImg.style.top = "-120px";
-
-    // Reiniciar zoom
-    bannerImg.style.transform = "scale(1)";
-
-    setTimeout(function(){
-
-        bannerImg.style.opacity = 1;
-
-        // Zoom lento
-        bannerImg.style.transform = "scale(1.08)";
-
-    },100);
-
-},1500);
+}
 
 
-},7000);
+// Ajustar posición según el dispositivo
 
+function ajustarBanner(){
+
+    if(esMovil()){
+
+        bannerImg.style.top = "0px";
+
+        aplicarZoomBanner(1);
+
+    }else{
+
+        bannerImg.style.top = posY + "px";
+
+        aplicarZoomBanner(1);
+
+    }
+
+}
+
+
+// Configuración inicial
+
+if(banner && bannerImg){
+
+    bannerImg.style.transition =
+    "opacity 1.5s ease, transform 6s ease";
+
+    ajustarBanner();
+
+
+    // Movimiento vertical solo en computadora
+
+    banner.addEventListener("wheel", function(e){
+
+        if(esMovil()){
+            return;
+        }
+
+        e.preventDefault();
+
+        posY -= e.deltaY * 0.5;
+
+        const limiteSuperior = 0;
+
+        const limiteInferior =
+        banner.clientHeight - bannerImg.clientHeight;
+
+
+        if(posY > limiteSuperior){
+
+            posY = limiteSuperior;
+
+        }
+
+
+        if(posY < limiteInferior){
+
+            posY = limiteInferior;
+
+        }
+
+
+        bannerImg.style.top = posY + "px";
+
+    }, { passive:false });
+
+
+    // Carrusel automático
+
+    setInterval(function(){
+
+        indice++;
+
+        if(indice >= imagenes.length){
+
+            indice = 0;
+
+        }
+
+
+        // Desvanecer imagen actual
+
+        bannerImg.style.opacity = 0;
+
+
+        setTimeout(function(){
+
+            // Cambiar imagen
+
+            bannerImg.src = imagenes[indice];
+
+
+            // Mantener posición correcta
+
+            if(esMovil()){
+
+                bannerImg.style.top = "0px";
+
+            }else{
+
+                bannerImg.style.top = posY + "px";
+
+            }
+
+
+            // Reiniciar zoom sin perder el centrado móvil
+
+            aplicarZoomBanner(1);
+
+
+            setTimeout(function(){
+
+                // Mostrar nueva imagen
+
+                bannerImg.style.opacity = 1;
+
+
+                // Aplicar zoom lento
+
+                aplicarZoomBanner(1.08);
+
+            },100);
+
+
+        },1500);
+
+
+    },7000);
+
+
+    // Corregir posición si cambia el tamaño de pantalla
+
+    window.addEventListener("resize", function(){
+
+        ajustarBanner();
+
+    });
+
+}
 
 // =========================
 // CONTADOR NUEVO LANZAMIENTO
