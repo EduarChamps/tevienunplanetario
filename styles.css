@@ -1406,3 +1406,123 @@ footer p{
         max-width:320px;
     }
 }
+
+
+/* =========================
+   ANIMACIONES AL HACER SCROLL
+========================= */
+
+/* Estado inicial */
+
+.revelar-scroll{
+
+    opacity:0;
+
+    transform:translateY(45px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.22,1,.36,1);
+
+    will-change:opacity, transform;
+
+}
+
+
+/* El elemento entra en pantalla */
+
+.revelar-scroll.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+/* Aparición desde la izquierda */
+
+.revelar-izquierda{
+
+    transform:translateX(-55px);
+
+}
+
+
+.revelar-izquierda.visible{
+
+    transform:translateX(0);
+
+}
+
+
+/* Aparición desde la derecha */
+
+.revelar-derecha{
+
+    transform:translateX(55px);
+
+}
+
+
+.revelar-derecha.visible{
+
+    transform:translateX(0);
+
+}
+
+
+/* Aparición con zoom sutil */
+
+.revelar-zoom{
+
+    transform:scale(.93);
+
+}
+
+
+.revelar-zoom.visible{
+
+    transform:scale(1);
+
+}
+
+
+/* Retrasos progresivos para tarjetas */
+
+.retraso-1{
+
+    transition-delay:.08s;
+
+}
+
+
+.retraso-2{
+
+    transition-delay:.16s;
+
+}
+
+
+.retraso-3{
+
+    transition-delay:.24s;
+
+}
+
+
+/* Evita animaciones si el usuario las desactiva */
+
+@media(prefers-reduced-motion:reduce){
+
+    .revelar-scroll{
+
+        opacity:1;
+
+        transform:none;
+
+        transition:none;
+
+    }
+
+}
