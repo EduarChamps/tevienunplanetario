@@ -143,7 +143,7 @@ function iniciarAnimacionesScroll(){
 
             },
 
-            {
+            
                 {
     threshold:0.18,
     rootMargin:"0px 0px -18% 0px"
