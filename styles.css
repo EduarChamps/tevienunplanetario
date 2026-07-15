@@ -1907,23 +1907,17 @@ footer p{
 
     position:absolute;
 
-    width:3px;
-    height:3px;
-
     border-radius:50%;
 
-    opacity:.45;
+    opacity:.55;
 
-    background:white;
+    background:#fff;
 
     box-shadow:
-
-        0 0 6px rgba(255,255,255,.75),
-
-        0 0 12px rgba(180,135,255,.55);
+        0 0 7px rgba(255,255,255,.95),
+        0 0 15px rgba(180,135,255,.75);
 
     animation:
-
         parpadeoEstrella ease-in-out infinite alternate;
 
 }
@@ -1932,23 +1926,16 @@ footer p{
 @keyframes parpadeoEstrella{
 
     from{
-
-        opacity:.15;
-
-        transform:scale(.75);
-
+        opacity:.25;
+        transform:scale(.7);
     }
 
     to{
-
-        opacity:.8;
-
-        transform:scale(1.35);
-
+        opacity:1;
+        transform:scale(1.45);
     }
 
 }
-
 
 /* Estrella fugaz */
 
