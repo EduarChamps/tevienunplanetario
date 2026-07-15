@@ -171,17 +171,24 @@ if(esEscritorio && !reduceMotion){
     let auraY = mouseY;
 
 
-    document.addEventListener(
-        "mousemove",
-        function(event){
+    document.documentElement.addEventListener(
+    "mouseleave",
+    function(){
 
-            mouseX = event.clientX;
-            mouseY = event.clientY;
+        aura.classList.remove("visible");
 
-            aura.classList.add("visible");
+    }
+);
 
-        }
-    );
+
+document.documentElement.addEventListener(
+    "mouseenter",
+    function(){
+
+        aura.classList.add("visible");
+
+    }
+);
 
 
     document.addEventListener(
