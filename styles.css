@@ -51,19 +51,17 @@ body::before{
     z-index:0;
 
     background:
-
         radial-gradient(
-            circle at 50% 120%,
-            rgba(120,80,255,.14),
-            transparent 45%
+            circle at 50% 115%,
+            rgba(125,80,240,.13),
+            transparent 48%
         );
 
-    filter:blur(120px);
+    filter:blur(110px);
 
     animation:
-        respirarNebulosa 18s ease-in-out infinite alternate;
-
-}
+        respirarNebulosa
+        18s ease-in-out infinite alternate;
 
 }
 
