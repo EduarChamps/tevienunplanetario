@@ -282,29 +282,47 @@ footer{
 ========================= */
 
 .shows{
+
     width:85%;
     max-width:1200px;
+
     margin:80px auto;
+
 }
+
 
 .shows h2{
+
     margin-bottom:40px;
+
     text-align:center;
+
     font-size:40px;
+
 }
 
+
 .tarjetas-shows{
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:35px;
+
 }
+
 
 .show{
 
     --movimiento-entrada:0px;
     --movimiento-hover:0px;
 
-    overflow:hidden;
+    position:relative;
+
+    overflow:visible;
+
+    isolation:isolate;
 
     border-radius:15px;
 
@@ -329,60 +347,188 @@ footer{
 }
 
 
+/* Nebulosa detrás de cada tarjeta */
+
+.show::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-22px;
+
+    z-index:-1;
+
+    opacity:0;
+
+    border-radius:30px;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(190,130,255,.50),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 75% 65%,
+            rgba(105,65,230,.45),
+            transparent 42%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(220,170,255,.22),
+            transparent 48%
+        );
+
+    filter:blur(24px);
+
+    transform:
+        scale(.88)
+        translateY(10px);
+
+    transition:
+        opacity .45s ease,
+        transform .55s cubic-bezier(.22,1,.36,1);
+
+}
+
+
 .show:hover{
 
     --movimiento-hover:-10px;
 
     box-shadow:
-        0 20px 40px rgba(120,80,200,.35);
+        0 22px 55px rgba(0,0,0,.55);
 
 }
+
+
+.show:hover::before{
+
+    opacity:1;
+
+    transform:
+        scale(1)
+        translateY(0);
+
+}
+
 
 .show img{
+
     width:100%;
+
     height:380px;
+
+    display:block;
+
     object-fit:cover;
+
+    border-radius:15px 15px 0 0;
+
 }
 
-.show div{
+
+.show > div{
+
+    position:relative;
+
+    z-index:1;
+
     padding:25px;
+
+    border-radius:0 0 15px 15px;
+
+    background:#15151a;
+
 }
+
 
 .show span{
+
     color:#cba6ff;
+
     font-size:14px;
+
     letter-spacing:3px;
+
     font-weight:bold;
+
 }
+
 
 .show h3{
+
     margin:15px 0;
+
     font-size:28px;
+
 }
+
 
 .show p{
+
     color:#ccc;
+
     line-height:1.6;
+
 }
+
 
 .btn-boletos{
+
     display:inline-block;
+
     margin-top:20px;
+
     padding:12px 22px;
+
     border-radius:30px;
+
     color:white;
+
     text-decoration:none;
+
     font-weight:bold;
-    background:linear-gradient(135deg,#8f5cff,#cba6ff);
-    box-shadow:0 10px 25px rgba(143,92,255,.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            #8f5cff,
+            #cba6ff
+        );
+
+    box-shadow:
+        0 10px 25px rgba(143,92,255,.35);
+
     transition:.35s;
+
 }
 
+
 .btn-boletos:hover{
+
     transform:translateY(-4px);
-    background:linear-gradient(135deg,#b78cff,#e0c7ff);
-    box-shadow:0 15px 35px rgba(143,92,255,.55);
+
+    background:
+        linear-gradient(
+            135deg,
+            #b78cff,
+            #e0c7ff
+        );
+
+    box-shadow:
+        0 15px 35px rgba(143,92,255,.55);
+
 }
+
+
+/* Entrada al hacer scroll */
 
 .show.revelar-scroll{
 
