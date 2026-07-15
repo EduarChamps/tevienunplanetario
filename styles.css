@@ -119,18 +119,31 @@ footer{
 }
 
 .banner img{
-    width:100%;
+
     position:absolute;
+
     left:0;
     top:-120px;
+
+    width:100%;
+    height:calc(100% + 240px);
+
+    object-fit:cover;
+    object-position:center;
+
     z-index:1;
+
     user-select:none;
     -webkit-user-drag:none;
+
     opacity:1;
+
     transform:scale(1);
+
     transition:
         opacity 1.5s ease,
         transform 6s ease;
+
 }
 
 /* Degradado final que une el banner con el fondo */
