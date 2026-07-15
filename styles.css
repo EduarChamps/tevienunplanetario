@@ -300,16 +300,42 @@ footer{
 }
 
 .show{
+
+    --movimiento-entrada:0px;
+    --movimiento-hover:0px;
+
     overflow:hidden;
+
     border-radius:15px;
+
     background:#15151a;
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
-    transition:.4s;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.4);
+
+    transform:
+        translateY(
+            calc(
+                var(--movimiento-entrada)
+                + var(--movimiento-hover)
+            )
+        );
+
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.22,1,.36,1),
+        box-shadow .4s ease;
+
 }
 
+
 .show:hover{
-    transform:translateY(-10px);
-    box-shadow:0 20px 40px rgba(120,80,200,.35);
+
+    --movimiento-hover:-10px;
+
+    box-shadow:
+        0 20px 40px rgba(120,80,200,.35);
+
 }
 
 .show img{
@@ -358,7 +384,18 @@ footer{
     box-shadow:0 15px 35px rgba(143,92,255,.55);
 }
 
+.show.revelar-scroll{
 
+    --movimiento-entrada:70px;
+
+}
+
+
+.show.revelar-scroll.visible{
+
+    --movimiento-entrada:0px;
+
+}
 /* =========================
    07. SECCIÓN MÚSICA
 ========================= */
