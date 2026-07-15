@@ -143,59 +143,7 @@ document.addEventListener("DOMContentLoaded", function(){
 }
 
 
-    // Crear estrella fugaz ocasional
-
-    function crearEstrellaFugaz(){
-
-        const estrellaFugaz =
-            document.createElement("span");
-
-        estrellaFugaz.className =
-            "estrella-fugaz";
-
-
-        estrellaFugaz.style.left =
-            (-25 + Math.random() * 35) + "%";
-
-        estrellaFugaz.style.top =
-            (-180 + Math.random() * 100) + "px";
-
-
-        contenedorParticulas.appendChild(
-            estrellaFugaz
-        );
-
-
-        setTimeout(function(){
-
-            estrellaFugaz.remove();
-
-        },2500);
-
-    }
-
-
-    function programarEstrellaFugaz(){
-
-        const espera =
-            8000 + Math.random() * 9000;
-
-
-        setTimeout(function(){
-
-            crearEstrellaFugaz();
-
-            programarEstrellaFugaz();
-
-        },espera);
-
-    }
-
-
-    programarEstrellaFugaz();
-
-}
-
+   
 
     // No crear aura en móviles o pantallas táctiles
 
