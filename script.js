@@ -271,3 +271,202 @@ setInterval(function(){
 
 
 },1000);
+
+// =========================
+// AURA DEL CURSOR
+// =========================
+
+const cursorAura =
+    document.querySelector(".cursor-aura");
+
+if (
+    cursorAura &&
+    window.matchMedia("(pointer:fine)").matches
+) {
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let auraX = 0;
+    let auraY = 0;
+
+    function animarAura(){
+
+        auraX +=
+            (mouseX - auraX) * 0.18;
+
+        auraY +=
+            (mouseY - auraY) * 0.18;
+
+        cursorAura.style.left =
+            `${auraX}px`;
+
+        cursorAura.style.top =
+            `${auraY}px`;
+
+        requestAnimationFrame(
+            animarAura
+        );
+
+    }
+
+
+    document.addEventListener(
+        "mousemove",
+        function(evento){
+
+            mouseX =
+                evento.clientX;
+
+            mouseY =
+                evento.clientY;
+
+            cursorAura.classList.add(
+                "visible"
+            );
+
+        }
+    );
+
+
+    document.addEventListener(
+        "mouseleave",
+        function(){
+
+            cursorAura.classList.remove(
+                "visible"
+            );
+
+        }
+    );
+
+
+    document.addEventListener(
+        "mouseenter",
+        function(){
+
+            cursorAura.classList.add(
+                "visible"
+            );
+
+        }
+    );
+
+
+    animarAura();
+
+}
+
+
+// =========================
+// COLORES DEL AURA
+// =========================
+
+if (cursorAura) {
+
+    function limpiarAura(){
+
+        cursorAura.classList.remove(
+            "spotify",
+            "youtube",
+            "apple",
+            "instagram",
+            "twitter",
+            "facebook",
+            "activa"
+        );
+
+    }
+
+
+    const botonesAura = [
+
+        {
+            selector:
+                ".botones-portada a:nth-child(1), .spotify-preguardar",
+
+            clase:
+                "spotify"
+        },
+
+        {
+            selector:
+                ".botones-portada a:nth-child(2)",
+
+            clase:
+                "youtube"
+        },
+
+        {
+            selector:
+                ".botones-portada a:nth-child(3), .apple-preguardar",
+
+            clase:
+                "apple"
+        },
+
+        {
+            selector:
+                ".botones-redes a:nth-child(1)",
+
+            clase:
+                "instagram"
+        },
+
+        {
+            selector:
+                ".botones-redes a:nth-child(2)",
+
+            clase:
+                "twitter"
+        },
+
+        {
+            selector:
+                ".botones-redes a:nth-child(3)",
+
+            clase:
+                "facebook"
+        }
+
+    ];
+
+
+    botonesAura.forEach(
+        function(configuracion){
+
+            document
+                .querySelectorAll(
+                    configuracion.selector
+                )
+                .forEach(
+                    function(boton){
+
+                        boton.addEventListener(
+                            "mouseenter",
+                            function(){
+
+                                limpiarAura();
+
+                                cursorAura.classList.add(
+                                    configuracion.clase,
+                                    "activa"
+                                );
+
+                            }
+                        );
+
+
+                        boton.addEventListener(
+                            "mouseleave",
+                            limpiarAura
+                        );
+
+                    }
+                );
+
+        }
+    );
+
+}
+
