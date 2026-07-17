@@ -340,8 +340,8 @@ function crearEstrellasPintadas(){
 
         const tamano =
             esMovil
-                ? numeroAleatorio(12, 31)
-                : numeroAleatorio(16, 48);
+                ? numeroAleatorio(16, 18)
+                : numeroAleatorio(22, 60);
 
 
         const duracion =
@@ -362,7 +362,7 @@ function crearEstrellasPintadas(){
 
 
         const opacidad =
-            numeroAleatorio(.10, .28);
+            numeroAleatorio(.55, .90);
 
 
         const rotacionInicial =
