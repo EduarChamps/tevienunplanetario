@@ -33,9 +33,9 @@ body{
 
 }
 
+
+
 /* Nebulosa morada del fondo */
-
-
 
 body::before{
 
@@ -43,9 +43,12 @@ body::before{
 
     position:absolute;
 
-    inset:0;
+    top:-8%;
+    right:-12%;
+    bottom:-8%;
+    left:-12%;
 
-    min-height:100%;
+    min-height:116%;
 
     pointer-events:none;
 
@@ -76,6 +79,8 @@ body::before{
     filter:blur(48px);
 
     opacity:.95;
+
+    transform-origin:center center;
 
     -webkit-mask-image:
         linear-gradient(
@@ -122,9 +127,7 @@ body::before{
 
     to{
 
-        transform:
-            scale(1.06)
-            rotate(1deg);
+        transform:scale(1.045);
 
         opacity:1;
 
@@ -2473,32 +2476,52 @@ footer p{
 @media(max-width:900px){
 
     .cursor-aura{
-
         display:none;
-
     }
 
+    body::before{
 
-     body::before{
-        opacity:.65;
-        filter:blur(45px);
+        top:-6%;
+        right:-18%;
+        bottom:-6%;
+        left:-18%;
+
+        min-height:112%;
+
+        opacity:.72;
+
+        filter:blur(42px);
+
+        animation:
+            respirarNebulosaMovil
+            18s ease-in-out
+            infinite alternate;
+
     }
-}
-
 
     .particulas-fondo{
-
         opacity:.45;
-
     }
-
 
     .estrella-fugaz{
-
         height:90px;
-
     }
 
+}
+
+@keyframes respirarNebulosaMovil{
+
+    from{
+        transform:scale(1);
+        opacity:.65;
+    }
+
+    to{
+        transform:scale(1.025);
+        opacity:.78;
+    }
+
+}
 
 
 
