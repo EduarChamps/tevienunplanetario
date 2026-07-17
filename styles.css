@@ -2143,10 +2143,7 @@ footer p{
 
     opacity:0;
 
-    transform:translate(-50%,-50%);
-
     background:
-
         radial-gradient(
             circle,
             rgba(255,255,255,.20) 0%,
@@ -2159,30 +2156,31 @@ footer p{
 
     mix-blend-mode:screen;
 
+    transform:
+        translate3d(-50%,-50%,0);
+
+    will-change:
+        left,
+        top,
+        transform,
+        opacity;
+
     transition:
-        opacity .35s ease,
+        opacity .3s ease,
         width .35s ease,
         height .35s ease,
-        background .35s ease,
-        transform .35s ease;
+        background .35s ease;
 
 }
-
 
 .cursor-aura.visible{
-
     opacity:1;
-
 }
-
 
 .cursor-aura.activa{
-
     width:340px;
     height:340px;
-
 }
-
 
 /* Colores dinámicos */
 
