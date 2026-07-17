@@ -1414,27 +1414,34 @@ footer{
 
 footer{
 
+    background:#000;
+
+    padding:80px 20px 45px;
+
     position:relative;
 
-    margin-top:0;
-
-    padding:60px 20px;
-
-    text-align:center;
-
-    color:#aaa;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #000 0%,
-            #000 12%,
-            #05030a 38%,
-            #10071f 74%,
-            #000 100%
-        );
-
     overflow:hidden;
+
+}
+
+footer::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(170,120,255,.20),
+        transparent
+    );
 
 }
 
