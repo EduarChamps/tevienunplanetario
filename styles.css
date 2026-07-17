@@ -2166,7 +2166,7 @@ footer p{
         opacity;
 
     transition:
-        opacity .3s ease,
+        opacity .35s ease,
         width .35s ease,
         height .35s ease,
         background .35s ease;
