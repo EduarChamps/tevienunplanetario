@@ -998,10 +998,29 @@ footer{
 ========================= */
 
 .contacto{
+
+    position:relative;
+
     width:85%;
     max-width:1000px;
-    margin:100px auto;
+
+    margin:
+        100px
+        auto
+        0;
+
+    padding-bottom:160px;
+
     text-align:center;
+
+}
+
+.contacto > *{
+
+    position:relative;
+
+    z-index:2;
+
 }
 
 .contacto h2{
@@ -1021,6 +1040,7 @@ footer{
     grid-template-columns:repeat(2,1fr);
     gap:35px;
 }
+
 
 .tarjeta-contacto{
 
@@ -2840,35 +2860,6 @@ radial-gradient(
 
 }
 
-
-.contacto::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:50%;
-    bottom:-1px;
-
-    width:100vw;
-    height:180px;
-
-    transform:translateX(-50%);
-
-    z-index:0;
-
-    pointer-events:none;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,0) 0%,
-            rgba(0,0,0,.35) 35%,
-            rgba(0,0,0,.82) 72%,
-            #000 100%
-        );
-
-}
 
 
 .contacto > *{
