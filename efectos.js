@@ -465,7 +465,4 @@ window.addEventListener(
     }
 );
 
-
-
-
 }); // Cierra: document.addEventListener("DOMContentLoaded", ...)
