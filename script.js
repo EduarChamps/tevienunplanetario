@@ -1,6 +1,6 @@
 // =========================
 // REINICIAR POSICIÓN AL RECARGAR
-// =========================
+// ========================= 
 
 if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
