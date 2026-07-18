@@ -276,24 +276,30 @@ setInterval(function(){
 // AURA DEL CURSOR
 // =========================
 
-const auras =
-    document.querySelectorAll(".cursor-aura");
-
-auras.forEach(function(aura, indice){
-
-    if (indice > 0) {
-        aura.remove();
-    }
-
-});
-
-const cursorAura =
-    document.querySelector(".cursor-aura");
-
 document.addEventListener("DOMContentLoaded", function(){
+
+    // Buscar todas las auras cuando el HTML ya cargó
+
+    const aurasEncontradas =
+        document.querySelectorAll(".cursor-aura");
+
+
+    // Conservar únicamente la primera
+
+    aurasEncontradas.forEach(
+        function(aura, indice){
+
+            if (indice > 0) {
+                aura.remove();
+            }
+
+        }
+    );
+
 
     const cursorAura =
         document.querySelector(".cursor-aura");
+
 
     if (!cursorAura) {
 
@@ -305,10 +311,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
     }
 
+
     if (
-        !window.matchMedia("(pointer: fine)").matches
+        !window.matchMedia(
+            "(pointer: fine)"
+        ).matches
     ) {
+
         return;
+
     }
 
 
@@ -321,7 +332,9 @@ document.addEventListener("DOMContentLoaded", function(){
     let iniciado = false;
 
 
-    // Seguimiento del puntero
+    // =========================
+    // SEGUIMIENTO DEL PUNTERO
+    // =========================
 
     window.addEventListener(
         "pointermove",
@@ -329,6 +342,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
             mouseX = evento.clientX;
             mouseY = evento.clientY;
+
 
             if (!iniciado) {
 
@@ -338,6 +352,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 iniciado = true;
 
             }
+
 
             cursorAura.classList.add(
                 "visible"
@@ -362,6 +377,22 @@ document.addEventListener("DOMContentLoaded", function(){
     );
 
 
+    document.documentElement.addEventListener(
+        "mouseenter",
+        function(){
+
+            if (iniciado) {
+
+                cursorAura.classList.add(
+                    "visible"
+                );
+
+            }
+
+        }
+    );
+
+
     function animarAura(){
 
         if (iniciado) {
@@ -372,6 +403,7 @@ document.addEventListener("DOMContentLoaded", function(){
             auraY +=
                 (mouseY - auraY) * 0.13;
 
+
             cursorAura.style.left =
                 `${auraX}px`;
 
@@ -379,6 +411,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 `${auraY}px`;
 
         }
+
 
         requestAnimationFrame(
             animarAura
@@ -413,50 +446,46 @@ document.addEventListener("DOMContentLoaded", function(){
 
         {
             selector:
-                ".botones-portada a:nth-child(1), .spotify-preguardar",
+                ".botones-portada a:nth-child(1), " +
+                ".spotify-preguardar",
 
-            clase:
-                "spotify"
+            clase:"spotify"
         },
 
         {
             selector:
                 ".botones-portada a:nth-child(2)",
 
-            clase:
-                "youtube"
+            clase:"youtube"
         },
 
         {
             selector:
-                ".botones-portada a:nth-child(3), .apple-preguardar",
+                ".botones-portada a:nth-child(3), " +
+                ".apple-preguardar",
 
-            clase:
-                "apple"
+            clase:"apple"
         },
 
         {
             selector:
                 ".botones-redes a:nth-child(1)",
 
-            clase:
-                "instagram"
+            clase:"instagram"
         },
 
         {
             selector:
                 ".botones-redes a:nth-child(2)",
 
-            clase:
-                "twitter"
+            clase:"twitter"
         },
 
         {
             selector:
                 ".botones-redes a:nth-child(3)",
 
-            clase:
-                "facebook"
+            clase:"facebook"
         }
 
     ];
@@ -465,41 +494,50 @@ document.addEventListener("DOMContentLoaded", function(){
     botonesAura.forEach(
         function(configuracion){
 
-            document
-                .querySelectorAll(
+            const botones =
+                document.querySelectorAll(
                     configuracion.selector
-                )
-                .forEach(
-                    function(boton){
-
-                        boton.addEventListener(
-                            "mouseenter",
-                            function(){
-
-                                limpiarAura();
-
-                                cursorAura.classList.add(
-                                    configuracion.clase,
-                                    "activa"
-                                );
-
-                            }
-                        );
-
-
-                        boton.addEventListener(
-                            "mouseleave",
-                            limpiarAura
-                        );
-
-                    }
                 );
+
+
+            botones.forEach(
+                function(boton){
+
+                    boton.addEventListener(
+                        "mouseenter",
+                        function(){
+
+                            limpiarAura();
+
+                            cursorAura.classList.add(
+                                configuracion.clase,
+                                "activa"
+                            );
+
+                        }
+                    );
+
+
+                    boton.addEventListener(
+                        "mouseleave",
+                        limpiarAura
+                    );
+
+                }
+            );
 
         }
     );
 
-});
 
+    console.log(
+        "Auras activas:",
+        document.querySelectorAll(
+            ".cursor-aura"
+        ).length
+    );
+
+});
 
 // =========================
 // ESTRELLAS FUGACES CORTAS
