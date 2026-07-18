@@ -276,13 +276,30 @@ setInterval(function(){
 // AURA DEL CURSOR
 // =========================
 
-const cursorAura =
-    document.querySelector(".cursor-aura");
+document.addEventListener("DOMContentLoaded", function(){
 
-if (
-    cursorAura &&
-    window.matchMedia("(pointer:fine)").matches
-) {
+    const cursorAura =
+        document.querySelector(".cursor-aura");
+
+    if (!cursorAura) {
+
+        console.warn(
+            "No se encontró el elemento .cursor-aura"
+        );
+
+        return;
+
+    }
+
+    if (
+        !window.matchMedia(
+            "(pointer:fine)"
+        ).matches
+    ) {
+
+        return;
+
+    }
 
     let mouseX = 0;
     let mouseY = 0;
@@ -290,36 +307,24 @@ if (
     let auraX = 0;
     let auraY = 0;
 
-    function animarAura(){
-
-        auraX +=
-            (mouseX - auraX) * 0.18;
-
-        auraY +=
-            (mouseY - auraY) * 0.18;
-
-        cursorAura.style.left =
-            `${auraX}px`;
-
-        cursorAura.style.top =
-            `${auraY}px`;
-
-        requestAnimationFrame(
-            animarAura
-        );
-
-    }
+    let iniciado = false;
 
 
     document.addEventListener(
         "mousemove",
         function(evento){
 
-            mouseX =
-                evento.clientX;
+            mouseX = evento.clientX;
+            mouseY = evento.clientY;
 
-            mouseY =
-                evento.clientY;
+            if (!iniciado) {
+
+                auraX = mouseX;
+                auraY = mouseY;
+
+                iniciado = true;
+
+            }
 
             cursorAura.classList.add(
                 "visible"
@@ -345,17 +350,42 @@ if (
         "mouseenter",
         function(){
 
-            cursorAura.classList.add(
-                "visible"
-            );
+            if (iniciado) {
+
+                cursorAura.classList.add(
+                    "visible"
+                );
+
+            }
 
         }
     );
 
 
+    function animarAura(){
+
+        auraX +=
+            (mouseX - auraX) * 0.22;
+
+        auraY +=
+            (mouseY - auraY) * 0.22;
+
+        cursorAura.style.left =
+            auraX + "px";
+
+        cursorAura.style.top =
+            auraY + "px";
+
+        requestAnimationFrame(
+            animarAura
+        );
+
+    }
+
+
     animarAura();
 
-}
+});
 
 
 // =========================
