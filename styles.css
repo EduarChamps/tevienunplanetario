@@ -1506,17 +1506,51 @@ footer{
 
     text-align:center;
 
-    background:transparent;
+    /*
+       Transición desde el fondo anterior
+       hacia negro absoluto.
+    */
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.72) 0%,
+            rgba(0,0,0,.90) 10%,
+            #000 24%,
+            #000 100%
+        );
+
+    isolation:isolate;
 
 }
 
-footer > *:not(.escena-lunar-footer){
 
-    position:relative;
+/* Capa negra que tapa la nebulosa del body */
 
-    z-index:5;
+footer::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:0;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.28) 0%,
+            rgba(0,0,0,.72) 10%,
+            #000 25%,
+            #000 100%
+        );
 
 }
+
+
+/* Línea superior muy sutil */
 
 footer::before{
 
@@ -1530,12 +1564,28 @@ footer::before{
     width:100%;
     height:1px;
 
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(170,120,255,.20),
-        transparent
-    );
+    z-index:7;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(170,120,255,.16),
+            transparent
+        );
+
+}
+
+
+/* Contenido del footer */
+
+footer > *:not(.escena-lunar-footer){
+
+    position:relative;
+
+    z-index:5;
 
 }
 
@@ -1682,7 +1732,7 @@ footer p{
     width:100%;
     height:650px;
 
-    z-index:1;
+    z-index:2;
 
     overflow:hidden;
 
@@ -2497,7 +2547,7 @@ radial-gradient(
 
     inset:0;
 
-    z-index:1;
+    z-index:4;
 
     pointer-events:none;
 
@@ -2821,7 +2871,7 @@ radial-gradient(
     width:100%;
     overflow:hidden;
     pointer-events:none;
-    z-index:2;
+    z-index:4;
 }
 
 .estrella-pintada{
