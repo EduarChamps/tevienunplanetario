@@ -276,6 +276,20 @@ setInterval(function(){
 // AURA DEL CURSOR
 // =========================
 
+const auras =
+    document.querySelectorAll(".cursor-aura");
+
+auras.forEach(function(aura, indice){
+
+    if (indice > 0) {
+        aura.remove();
+    }
+
+});
+
+const cursorAura =
+    document.querySelector(".cursor-aura");
+
 document.addEventListener("DOMContentLoaded", function(){
 
     const cursorAura =
