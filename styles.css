@@ -2825,8 +2825,6 @@ radial-gradient(
 
     filter:blur(2px);
 
-    animation:
-        brilloTitulo 7s ease-in-out infinite;
 
 }
 
@@ -2871,19 +2869,19 @@ radial-gradient(
 .particulas-fondo{
 
     position:fixed;
-
     inset:0;
 
     z-index:4;
 
     pointer-events:none;
-
     overflow:hidden;
 
 }
 
 
-/* Estrellas pequeñas */
+/* =========================
+   ESTRELLAS PEQUEÑAS
+========================= */
 
 .particula{
 
@@ -2902,19 +2900,412 @@ radial-gradient(
     animation:
         parpadeoEstrella ease-in-out infinite alternate;
 
+    transition:
+        opacity .25s ease,
+        filter .25s ease;
+
 }
 
 
+/* Parpadeo normal de las partículas */
+
 @keyframes parpadeoEstrella{
 
-    from{
+    0%{
+
         opacity:.25;
-        transform:scale(.7);
+
+        transform:
+            scale(.75);
+
     }
 
-    to{
+    100%{
+
+        opacity:.9;
+
+        transform:
+            scale(1.2);
+
+    }
+
+}
+
+
+/* =========================
+   PARTÍCULA TRANSFORMADA
+   EN DESTELLO CÓSMICO
+========================= */
+
+.particula.destello-cosmico-activo{
+
+    width:4px !important;
+    height:4px !important;
+
+    border-radius:50%;
+
+    opacity:1;
+
+    background:#fff;
+
+    animation:
+        transformarEnDestello
+        1100ms
+        ease-out
+        forwards;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,1),
+        0 0 18px rgba(205,175,255,.95),
+        0 0 32px rgba(145,110,255,.75);
+
+}
+
+
+/* Brazo horizontal del destello */
+
+.particula.destello-cosmico-activo::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:26px;
+    height:2px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(220,195,255,.75),
+            #fff,
+            rgba(220,195,255,.75),
+            transparent
+        );
+
+    transform:
+        translate(-50%, -50%);
+
+}
+
+
+/* Brazo vertical del destello */
+
+.particula.destello-cosmico-activo::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:2px;
+    height:26px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(180,215,255,.75),
+            #fff,
+            rgba(180,215,255,.75),
+            transparent
+        );
+
+    transform:
+        translate(-50%, -50%);
+
+}
+
+
+@keyframes transformarEnDestello{
+
+    0%{
+
+        opacity:.35;
+
+        filter:
+            brightness(1);
+
+        transform:
+            scale(.5)
+            rotate(0deg);
+
+    }
+
+    35%{
+
         opacity:1;
-        transform:scale(1.45);
+
+        filter:
+            brightness(2);
+
+        transform:
+            scale(1.3)
+            rotate(10deg);
+
+    }
+
+    70%{
+
+        opacity:.9;
+
+        transform:
+            scale(1)
+            rotate(20deg);
+
+    }
+
+    100%{
+
+        opacity:.3;
+
+        filter:
+            brightness(1);
+
+        transform:
+            scale(.5)
+            rotate(30deg);
+
+    }
+
+}
+
+/* =========================
+   TÍTULO CÓSMICO
+========================= */
+
+.titulo-cosmico{
+
+    position:relative;
+    display:inline-block;
+
+}
+
+/* =========================================================
+   DESTELLO DE CUATRO PUNTAS
+========================================================= */
+
+.titulo-cosmico{
+
+    position:relative;
+    display:inline-block;
+
+    overflow:visible;
+
+}
+
+
+.particula-titulo{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    display:block;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:30;
+
+    transform:
+        scale(.2)
+        rotate(
+            var(
+                --rotacion-estrella,
+                0deg
+            )
+        );
+
+}
+
+
+/* Brazo horizontal */
+
+.particula-titulo::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:
+        var(
+            --tamano-estrella,
+            20px
+        );
+
+    height:3px;
+
+    transform:
+        translate(-50%, -50%);
+
+    clip-path:
+        polygon(
+            0 50%,
+            50% 0,
+            100% 50%,
+            50% 100%
+        );
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(210,190,255,.65),
+            #fff,
+            rgba(210,190,255,.65),
+            transparent
+        );
+
+}
+
+
+/* Brazo vertical */
+
+.particula-titulo::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:3px;
+
+    height:
+        var(
+            --tamano-estrella,
+            20px
+        );
+
+    transform:
+        translate(-50%, -50%);
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 50%,
+            50% 100%,
+            0 50%
+        );
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(180,215,255,.65),
+            #fff,
+            rgba(180,215,255,.65),
+            transparent
+        );
+
+}
+
+
+/* La clase reinicia la aparición */
+
+.particula-titulo.estrella-visible{
+
+    animation:
+        aparecerDestelloTitulo
+        1050ms
+        ease-in-out
+        forwards;
+
+}
+
+
+@keyframes aparecerDestelloTitulo{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            scale(.15)
+            rotate(
+                var(
+                    --rotacion-estrella,
+                    0deg
+                )
+            );
+
+        filter:
+            brightness(.7);
+
+    }
+
+    35%{
+
+        opacity:1;
+
+        transform:
+            scale(1.15)
+            rotate(
+                var(
+                    --rotacion-estrella,
+                    0deg
+                )
+            );
+
+        filter:
+            brightness(2);
+
+    }
+
+    60%{
+
+        opacity:.9;
+
+        transform:
+            scale(.95)
+            rotate(
+                var(
+                    --rotacion-estrella,
+                    0deg
+                )
+            );
+
+        filter:
+            brightness(1.5);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            scale(.25)
+            rotate(
+                var(
+                    --rotacion-estrella,
+                    0deg
+                )
+            );
+
+        filter:
+            brightness(.8);
+
     }
 
 }
@@ -4457,30 +4848,47 @@ body.pagina-galeria-body footer{
 
     }
 
+}
+/* Copyright encima de la superficie lunar */
 
-    /* Copyright encima de la superficie lunar */
+body:not(.pagina-musica-body):not(.pagina-galeria-body)
+footer > p:last-of-type{
 
-    body:not(.pagina-musica-body):not(.pagina-galeria-body)
-    footer > p:last-of-type{
+    position:absolute;
 
-        position:absolute;
+    left:50%;
+    bottom:22px;
 
-        left:15px;
-        right:15px;
-        bottom:24px;
+    transform:translateX(-50%);
 
-        margin:0;
+    margin:0;
+    z-index:8;
 
-        z-index:8;
+    padding:10px 22px;
 
-        color:rgba(255,255,255,.46);
+    color:rgba(255,255,255,.82);
 
-        text-align:center;
+    font-size:.92rem;
+    font-weight:500;
+    letter-spacing:.4px;
 
-    }
+    text-align:center;
+    white-space:nowrap;
+
+    background:rgba(0,0,0,.26);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:999px;
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.10);
 
 }
-
 
 /* =========================================================
    FOOTER LUNAR — MÓVIL HORIZONTAL
@@ -5250,7 +5658,9 @@ footer > p:last-of-type{
     color:rgba(255,255,255,.44);
 
     text-shadow:
-        0 2px 6px rgba(0,0,0,.95);
+        0 2px 8px rgba(0,0,0,.1),
+        0 0 14px rgba(0,0,0 .85),
+        0 0 40px rgba(0,0,0, 45);
 
 }
 
@@ -5733,11 +6143,89 @@ body:not(.pagina-musica-body):not(.pagina-galeria-body)
 
 }
 
+/* =========================================================
+   PARTÍCULAS EXCLUSIVAS DEL TÍTULO
+========================================================= */
+
+.titulo-cosmico{
+
+    position:relative !important;
+    display:inline-block !important;
+
+    overflow:visible !important;
+
+    z-index:20;
+
+}
 
 
+/* Partícula pequeña */
+
+.particula-titulo{
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    display:block;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    opacity:.9;
+
+    pointer-events:none;
+
+    z-index:30;
+
+    box-shadow:
+        0 0 6px rgba(255,255,255,1),
+        0 0 14px rgba(190,150,255,.95),
+        0 0 25px rgba(130,90,255,.7);
+
+    animation:
+        brilloParticulaTitulo
+        2.4s
+        ease-in-out
+        infinite
+        alternate;
+
+}
 
 
+@keyframes brilloParticulaTitulo{
 
+    0%{
 
+        opacity:.25;
 
+        transform:scale(.65);
 
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1.35);
+
+    }
+
+    100%{
+
+        opacity:.4;
+
+        transform:scale(.8);
+
+    }
+
+}
+
+.titulo-blog,
+.titulo-cosmico{
+
+    overflow:visible !important;
+
+}

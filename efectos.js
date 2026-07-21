@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function(){
             Math.random() * 100;
 
         const posicionY =
-            Math.random() * 100;
+    45 + Math.random() * 55;
 
         const tamano =
             1.5 + Math.random() * 3;
@@ -465,4 +465,466 @@ window.addEventListener(
     }
 );
 
+
+// =========================================================
+// DESTELLOS MÓVILES DEL TÍTULO
+// =========================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const titulo =
+            document.querySelector(
+                ".titulo-cosmico"
+            );
+
+
+        if (!titulo) {
+
+            console.warn(
+                "No se encontró .titulo-cosmico"
+            );
+
+            return;
+
+        }
+
+
+        const reduceMotion =
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+
+        if (reduceMotion) {
+            return;
+        }
+
+
+        const cantidad =
+            window.innerWidth <= 600
+                ? 3
+                : 5;
+
+
+        function cambiarPosicion(
+            particula
+        ){
+
+            /*
+               Elegimos uno de los cuatro lados
+               del título para evitar tapar letras.
+            */
+
+            const lado =
+                Math.floor(
+                    Math.random() * 4
+                );
+
+
+            let posicionX;
+            let posicionY;
+
+
+            switch (lado) {
+
+                /* Arriba */
+
+                case 0:
+
+                    posicionX =
+                        4 + Math.random() * 92;
+
+                    posicionY =
+                        -5 + Math.random() * 14;
+
+                    break;
+
+
+                /* Abajo */
+
+                case 1:
+
+                    posicionX =
+                        4 + Math.random() * 92;
+
+                    posicionY =
+                        88 + Math.random() * 17;
+
+                    break;
+
+
+                /* Izquierda */
+
+                case 2:
+
+                    posicionX =
+                        -1 + Math.random() * 8;
+
+                    posicionY =
+                        15 + Math.random() * 70;
+
+                    break;
+
+
+                /* Derecha */
+
+                default:
+
+                    posicionX =
+                        93 + Math.random() * 8;
+
+                    posicionY =
+                        15 + Math.random() * 70;
+
+                    break;
+
+            }
+
+
+            particula.style.left =
+                posicionX + "%";
+
+
+            particula.style.top =
+                posicionY + "%";
+
+
+            const tamaño =
+                14 + Math.random() * 12;
+
+
+            particula.style.setProperty(
+                "--tamano-estrella",
+                tamaño + "px"
+            );
+
+
+            const rotacion =
+                -15 + Math.random() * 30;
+
+
+            particula.style.setProperty(
+                "--rotacion-estrella",
+                rotacion + "deg"
+            );
+
+        }
+
+
+        function activarDestello(
+            particula
+        ){
+
+            /*
+               Primero queda invisible.
+            */
+
+            particula.classList.remove(
+                "estrella-visible"
+            );
+
+
+            /*
+               Cambiamos su posición mientras
+               permanece oculta.
+            */
+
+            cambiarPosicion(
+                particula
+            );
+
+
+            /*
+               Un pequeño retraso permite reiniciar
+               correctamente la animación.
+            */
+
+            requestAnimationFrame(
+                function(){
+
+                    requestAnimationFrame(
+                        function(){
+
+                            particula.classList.add(
+                                "estrella-visible"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+            /*
+               Espera aleatoria antes de aparecer
+               nuevamente en otro lugar.
+            */
+
+            const siguienteDestello =
+                1300 +
+                Math.random() * 2600;
+
+
+            setTimeout(
+                function(){
+
+                    activarDestello(
+                        particula
+                    );
+
+                },
+                siguienteDestello
+            );
+
+        }
+
+
+        for (
+            let indice = 0;
+            indice < cantidad;
+            indice++
+        ) {
+
+            const particula =
+                document.createElement(
+                    "span"
+                );
+
+
+            particula.className =
+                "particula-titulo";
+
+
+            particula.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            titulo.appendChild(
+                particula
+            );
+
+
+            /*
+               Cada estrella inicia en un momento
+               distinto para que no parpadeen juntas.
+            */
+
+            setTimeout(
+                function(){
+
+                    activarDestello(
+                        particula
+                    );
+
+                },
+                300 +
+                indice * 550 +
+                Math.random() * 700
+            );
+
+        }
+
+
+        console.log(
+            "Destellos móviles del título:",
+            cantidad
+        );
+
+    }
+);
+
+
+crearParticulasTitulo();
+
 }); // Cierra: document.addEventListener("DOMContentLoaded", ...)
+
+
+// =========================================================
+// PARTÍCULAS EXCLUSIVAS DEL TÍTULO
+// =========================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const titulo =
+            document.querySelector(
+                ".titulo-cosmico"
+            );
+
+
+        if (!titulo) {
+
+            console.warn(
+                "No se encontró .titulo-cosmico"
+            );
+
+            return;
+
+        }
+
+
+        /*
+           Posiciones controladas alrededor del título.
+           Esto garantiza que siempre aparezcan.
+        */
+
+        const esMovil =
+    window.innerWidth <= 600;
+
+
+const posiciones =
+    esMovil
+        ? [
+
+            /*
+               En móvil permanecen dentro
+               del área visible del título.
+            */
+
+            {
+                izquierda: "3%",
+                arriba: "18%"
+            },
+
+            {
+                izquierda: "26%",
+                arriba: "4%"
+            },
+
+            {
+                izquierda: "73%",
+                arriba: "5%"
+            },
+
+            {
+                izquierda: "96%",
+                arriba: "55%"
+            }
+
+        ]
+        : [
+
+            {
+                izquierda: "2%",
+                arriba: "12%"
+            },
+
+            {
+                izquierda: "22%",
+                arriba: "-8%"
+            },
+
+            {
+                izquierda: "48%",
+                arriba: "3%"
+            },
+
+            {
+                izquierda: "74%",
+                arriba: "-6%"
+            },
+
+            {
+                izquierda: "98%",
+                arriba: "30%"
+            },
+
+            {
+                izquierda: "88%",
+                arriba: "88%"
+            }
+
+        ];
+
+
+        /*
+           En móvil usamos menos partículas.
+        */
+
+        const cantidad =
+    posiciones.length;
+
+
+        for (
+            let indice = 0;
+            indice < cantidad;
+            indice++
+        ) {
+
+            const particula =
+                document.createElement(
+                    "span"
+                );
+
+
+            particula.className =
+                "particula-titulo";
+
+
+            particula.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            particula.style.left =
+                posiciones[indice]
+                    .izquierda;
+
+
+            particula.style.top =
+                posiciones[indice]
+                    .arriba;
+
+
+            /*
+               Tamaño ligeramente diferente
+               para que no se vean idénticas.
+            */
+
+            const tamano =
+                3 +
+                Math.random() * 3;
+
+
+            particula.style.width =
+                tamano + "px";
+
+
+            particula.style.height =
+                tamano + "px";
+
+
+            particula.style.animationDelay =
+                (
+                    Math.random() * -2.5
+                ) + "s";
+
+
+            particula.style.animationDuration =
+                (
+                    1.8 +
+                    Math.random() * 2
+                ) + "s";
+
+
+            titulo.appendChild(
+                particula
+            );
+
+        }
+
+
+        console.log(
+            "Partículas del título creadas:",
+            cantidad
+        );
+
+    }
+);
