@@ -43,11 +43,57 @@ document.addEventListener("DOMContentLoaded", function(){
             "particula";
 
 
-        const posicionX =
-            Math.random() * 100;
+       const posicionX =
+    Math.random() * 100;
 
-        const posicionY =
-    45 + Math.random() * 55;
+
+const escenaLunar =
+    document.querySelector(
+        ".escena-lunar-footer"
+    );
+
+
+let posicionY;
+
+
+if (escenaLunar) {
+
+    const rectEscena =
+        escenaLunar
+            .getBoundingClientRect();
+
+
+    const limiteSuperiorEscena =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                (
+                    rectEscena.top /
+                    window.innerHeight
+                ) * 100
+            )
+        );
+
+
+    const margenSeguridad =
+        3;
+
+
+    posicionY =
+        Math.random() *
+        Math.max(
+            0,
+            limiteSuperiorEscena -
+            margenSeguridad
+        );
+
+} else {
+
+    posicionY =
+        Math.random() * 100;
+
+}
 
         const tamano =
             1.5 + Math.random() * 3;
@@ -925,6 +971,142 @@ const posiciones =
             "Partículas del título creadas:",
             cantidad
         );
+
+    }
+);
+
+
+// =========================================================
+// DESTELLOS QUE NACEN DESDE LAS LETRAS DEL BANNER
+// =========================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const titulo =
+            document.querySelector(
+                ".titulo-cosmico"
+            );
+
+        if (!titulo) {
+            return;
+        }
+
+
+        /*
+           Posiciones pensadas para que el destello
+           toque el borde superior, inferior o lateral
+           de las letras, no para que flote alrededor.
+        */
+
+        const puntosLetra = [
+
+            { x: 3,   y: 48 },
+            { x: 15,  y: 8  },
+            { x: 26,  y: 88 },
+            { x: 39,  y: 12 },
+            { x: 50,  y: 90 },
+            { x: 62,  y: 7  },
+            { x: 74,  y: 90 },
+            { x: 86,  y: 12 },
+            { x: 98,  y: 52 }
+
+        ];
+
+
+        function crearDestello(){
+
+            const destello =
+                document.createElement(
+                    "span"
+                );
+
+            destello.className =
+                "destello-letra";
+
+
+            const punto =
+                puntosLetra[
+                    Math.floor(
+                        Math.random() *
+                        puntosLetra.length
+                    )
+                ];
+
+
+            /*
+               Pequeña variación para evitar
+               que todos aparezcan exactamente
+               en el mismo píxel.
+            */
+
+            const variacionX =
+                (Math.random() - .5) * 2;
+
+            const variacionY =
+                (Math.random() - .5) * 2;
+
+
+            destello.style.left =
+                `${punto.x + variacionX}%`;
+
+            destello.style.top =
+                `${punto.y + variacionY}%`;
+
+
+            const tamaño =
+                10 + Math.random() * 9;
+
+            destello.style.width =
+                `${tamaño}px`;
+
+            destello.style.height =
+                `${tamaño}px`;
+
+
+            titulo.appendChild(
+                destello
+            );
+
+
+            destello.addEventListener(
+                "animationend",
+                function(){
+
+                    destello.remove();
+
+                }
+            );
+
+        }
+
+
+        /*
+           Solo uno o dos destellos simultáneos.
+           Así parece brillo de las letras,
+           no decoración espacial.
+        */
+
+        function programarDestello(){
+
+            crearDestello();
+
+
+            const siguiente =
+                700 +
+                Math.random() * 1500;
+
+
+            setTimeout(
+                programarDestello,
+                siguiente
+            );
+
+        }
+
+
+        programarDestello();
 
     }
 );

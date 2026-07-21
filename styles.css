@@ -1764,7 +1764,7 @@ body:not(.pagina-musica-body):not(.pagina-galeria-body)
     width:100%;
     height:650px;
 
-    z-index:2;
+    z-index:20;
 
     overflow:hidden;
 
@@ -4862,7 +4862,7 @@ footer > p:last-of-type{
     transform:translateX(-50%);
 
     margin:0;
-    z-index:8;
+    z-index:20;
 
     padding:10px 22px;
 
@@ -6227,5 +6227,238 @@ body:not(.pagina-musica-body):not(.pagina-galeria-body)
 .titulo-cosmico{
 
     overflow:visible !important;
+
+}
+
+/* La escena lunar cubre cualquier partícula residual */
+
+.escena-lunar-footer{
+
+    position:relative;
+
+    z-index:10;
+
+    isolation:isolate;
+
+    overflow:hidden;
+
+}
+
+/* =========================================================
+   CAPAS DE LA ESCENA LUNAR
+========================================================= */
+
+.escena-lunar-footer{
+
+    position:relative;
+
+    /*
+       No colocar z-index aquí.
+       Así los hijos pueden competir
+       con las partículas globales.
+    */
+
+}
+
+.suelo-lunar{
+
+    position:absolute;
+    z-index:6;
+
+}
+
+.halo-anuncio-lunar{
+
+    position:absolute;
+    z-index:5;
+
+}
+
+.anuncio-lunar{
+
+    position:absolute;
+    z-index:7;
+
+}
+
+/* =========================================================
+   CORRECCIÓN DEFINITIVA DE CAPAS DEL FOOTER LUNAR
+========================================================= */
+
+/*
+   El footer no debe crear un contexto de apilamiento.
+   Así sus elementos internos pueden superar el z-index 4.
+*/
+
+footer{
+    position:relative;
+    z-index:auto !important;
+    isolation:auto !important;
+}
+
+
+/*
+   Tampoco debe encerrar las capas internas.
+*/
+
+.escena-lunar-footer{
+    position:relative;
+    z-index:auto !important;
+    isolation:auto !important;
+}
+
+
+/* Halo encima de las partículas */
+
+.halo-anuncio-lunar{
+    position:absolute;
+    z-index:5 !important;
+}
+
+
+/* Suelo lunar encima de partículas y estrellas PNG */
+
+.suelo-lunar{
+    position:absolute;
+    z-index:6 !important;
+}
+
+
+/* Anuncio por encima de todo */
+
+.anuncio-lunar{
+    position:absolute;
+    z-index:7 !important;
+}
+
+/* =========================================================
+   DESTELLOS PEGADOS A LAS LETRAS DEL TÍTULO
+========================================================= */
+
+.titulo-cosmico{
+
+    position:relative;
+    display:inline-block;
+
+    overflow:visible;
+
+}
+
+.destello-letra{
+
+    position:absolute;
+
+    width:16px;
+    height:16px;
+
+    pointer-events:none;
+
+    z-index:3;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.3);
+
+    opacity:0;
+
+    filter:
+        drop-shadow(0 0 4px rgba(255,255,255,.95))
+        drop-shadow(0 0 10px rgba(210,190,255,.80));
+
+    animation:
+        brillarDesdeLetra
+        2.4s
+        ease-in-out
+        forwards;
+
+}
+
+.destello-letra::before,
+.destello-letra::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%, -50%);
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255,255,255,.98),
+            transparent
+        );
+
+}
+
+.destello-letra::before{
+
+    width:3px;
+    height:100%;
+
+}
+
+.destello-letra::after{
+
+    width:100%;
+    height:3px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(255,255,255,.98),
+            transparent
+        );
+
+}
+
+@keyframes brillarDesdeLetra{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.2);
+
+    }
+
+    25%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
+    55%{
+
+        opacity:.95;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.78);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.15);
+
+    }
 
 }
